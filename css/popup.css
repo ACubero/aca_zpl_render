@@ -1,0 +1,208 @@
+/* css/popup.css */
+
+/* --- Variables --- */
+:root {
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --body-bg: #f8f9fa;
+  --container-bg: #ffffff;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --secondary-color: #6c757d;  /* Gris para botones secundarios */
+  --secondary-hover: #5a6268;
+  --border-color: #dee2e6;
+  --error-bg: #f8d7da;
+  --error-text: #842029;
+  --error-border: #f5c2c7;
+  --spacing-base: 1rem;
+  --border-radius: 0.375rem;
+  /* --popup-width: 600px; */ /* <-- ELIMINADO: Ancho fijo */
+}
+
+/* --- Estilos Generales --- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Permitir que el contenido llene la ventana */
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--body-bg);
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+body {
+  display: flex; /* Usar flex para centrar/alinear el container */
+  flex-direction: column;
+  min-height: 100vh; /* Asegurar altura mínima */
+}
+
+.container {
+  width: 100%;
+  max-width: 900px; /* Un ancho máximo para que no se extienda indefinidamente */
+  margin: auto; /* Centrar el contenedor si la ventana es muy ancha */
+  padding: calc(var(--spacing-base) * 1.25);
+  background-color: var(--container-bg);
+  flex-grow: 1; /* Permitir que el contenedor crezca */
+  display: flex;
+  flex-direction: column; /* Organizar contenido verticalmente */
+  overflow-y: auto; /* Scroll si el contenido excede la altura */
+}
+
+
+h3 {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: var(--spacing-base);
+  margin-bottom: calc(var(--spacing-base) * 0.75);
+  padding-bottom: calc(var(--spacing-base) * 0.3);
+  border-bottom: 1px solid #eee;
+}
+h3:first-of-type {
+    margin-top: 0;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: calc(var(--spacing-base) * 0.3);
+  font-size: 0.875em;
+}
+
+/* --- Controles y Formulario --- */
+textarea,
+select,
+input[type="text"] {
+  width: 100%;
+  padding: calc(var(--spacing-base) * 0.5) calc(var(--spacing-base) * 0.75);
+  margin-bottom: var(--spacing-base);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 0.95em;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+textarea:focus,
+select:focus,
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+textarea {
+  /* flex-grow: 1; */ /* Hacer que el textarea crezca si hay espacio vertical */
+  min-height: 120px;
+  resize: vertical;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-base);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-base);
+}
+
+.control-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* --- Botones --- */
+.action-buttons-container {
+    margin-bottom: var(--spacing-base);
+    display: flex;
+    flex-wrap: wrap; /* Para que los botones se ajusten */
+    align-items: center; /* Alinear botones e indicadores */
+    gap: calc(var(--spacing-base) * 0.5); /* Espacio entre botones */
+}
+
+.action-button {
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-base) * 0.6) calc(var(--spacing-base) * 1.2);
+  border-radius: var(--border-radius);
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  text-align: center;
+}
+.action-button.primary {
+    background-color: var(--primary-color);
+}
+.action-button.primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+.action-button.secondary {
+    background-color: var(--secondary-color);
+}
+.action-button.secondary:hover:not(:disabled) {
+    background-color: var(--secondary-hover);
+}
+
+.action-button:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Indicador de Carga y Mensajes --- */
+.loading-indicator {
+  display: inline-block;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.9em;
+  margin-left: calc(var(--spacing-base) * 0.5);
+}
+
+.error-message {
+  color: var(--error-text);
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  padding: calc(var(--spacing-base) * 0.75);
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing-base);
+  font-size: 0.9em;
+}
+.error-message:empty {
+    display: none; margin-top: 0; padding: 0; border: none;
+}
+
+
+/* --- Contenedor de Previsualización --- */
+.preview-container {
+  margin-top: var(--spacing-base);
+  padding: var(--spacing-base);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  min-height: 150px;
+  background-color: var(--body-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; /* Scroll si la imagen es más grande que el contenedor */
+  flex-grow: 1; /* Permitir que crezca si hay espacio */
+  margin-bottom: var(--spacing-base); /* Espacio al final */
+}
+
+#previewImage {
+  max-width: 100%;
+  max-height: 100%;  /* Permitir que la altura sea natural */
+  height: auto;
+  display: block;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#previewImage:not([src]) { display: none; }

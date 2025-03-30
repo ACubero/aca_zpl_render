@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "ZPL Previewer Resizable (via Labelary API)",
+  "version": "1.1",
+  "description": "Previews ZPL code using the Labelary API in a resizable window and allows export.",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_title": "Abrir ZPL Previewer", 
+     "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js" 
+  },
+  "host_permissions": [
+    "https://api.labelary.com/"
+  ],
+  "permissions": [
+    "storage" 
+  ]
+}

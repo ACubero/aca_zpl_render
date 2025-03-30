@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ZPL Preview</title>
+  <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+  <div class="container">
+
+    <h3>Pegar Código ZPL:</h3>
+    <textarea id="zplInput" rows="10" placeholder="^XA ... ^XZ"></textarea>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="dpiSelect">Densidad:</label>
+        <select id="dpiSelect">
+          <option value="8" selected>8 dpmm (203 dpi)</option>
+          <option value="12">12 dpmm (300 dpi)</option>
+          <option value="24">24 dpmm (600 dpi)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="sizeInput">Tamaño (Ancho x Alto pulgadas):</label>
+        <input type="text" id="sizeInput" value="4x6">
+      </div>
+    </div>
+
+    <div class="action-buttons-container">
+        <button id="previewButton" class="action-button primary">Previsualizar Etiqueta</button>
+        <button id="exportPngButton" class="action-button secondary">Exportar PNG</button>
+        <button id="exportPdfButton" class="action-button secondary">Exportar PDF</button>
+        <span id="loadingIndicator" class="loading-indicator" style="display: none;">Cargando...</span>
+        <span id="exportIndicator" class="loading-indicator" style="display: none;">Exportando...</span> </div>
+
+    <div id="errorMsg" class="error-message"></div>
+
+    <h3>Previsualización:</h3>
+    <div class="preview-container">
+      <img id="previewImage" src="" alt="Aquí aparecerá la previsualización de la etiqueta">
+    </div>
+
+  </div> <script src="scripts/popup.js"></script>
+</body>
+</html>
