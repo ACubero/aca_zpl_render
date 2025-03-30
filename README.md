@@ -54,4 +54,4 @@ Esta extensión proporciona una interfaz sencilla dentro de una ventana de naveg
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE.md](LICENSE.md) para más detalles.
+Este proyecto está bajo la Licencia MIT - consulta el archivo LICENSE.md para más detalles.
